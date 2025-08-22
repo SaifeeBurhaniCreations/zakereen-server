@@ -15,7 +15,7 @@ async function startOccasions() {
 async function endOccasions() {
     const now = new Date();
     const result = await occassionClient.updateMany(
-        { status: 'pending', ends_at: { $lte: now } },
+        { status: 'started', ends_at: { $lte: now } },
         { $set: { status: 'ended', updatedat: now } }
     );
     if (result.modifiedCount > 0) {
